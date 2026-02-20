@@ -29,9 +29,9 @@ with st.sidebar:
         if st.button("Login"):
             try:
                 response = requests.get(
-                    "http://127.0.0.1:8000/login",
-                    auth=HTTPBasicAuth(username, password)
-                )
+                "https://role-based-aichatbot.onrender.com/login",
+                 auth=HTTPBasicAuth(username, password)
+                 )
                 if response.status_code == 200:
                     user_data = response.json()
                     st.session_state.user = {
@@ -111,7 +111,7 @@ if st.session_state.user:
             with st.spinner("🤖 Thinking..."):
                 try:
                     response = requests.post(
-                        "http://127.0.0.1:8000/chat",
+                        "https://role-based-aichatbot.onrender.com/chat",
                         json={
                             "user": st.session_state.user,
                             "message": user_input
