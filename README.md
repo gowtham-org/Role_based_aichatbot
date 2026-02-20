@@ -2,6 +2,7 @@
 ![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)
 ![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red)
 ![OpenAI](https://img.shields.io/badge/LLM-OpenAI-black)
+![LangChain](https://img.shields.io/badge/Built%20with-LangChain-green)
 ![Embeddings](https://img.shields.io/badge/Embeddings-text--embedding--3--small-orange)
 ![VectorDB](https://img.shields.io/badge/VectorDB-Chroma-purple)
 ![Deployment](https://img.shields.io/badge/Deployment-Render-blueviolet)
