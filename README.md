@@ -164,7 +164,7 @@ role_based_aichatbot-/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/Anshuman776/Role_based_aichatbot-.git
+git clone https://github.com/gowtham-org/Role_based_aichatbot
 cd Role_based_aichatbot-
 ```
 
@@ -270,20 +270,5 @@ completion = client.chat.completions.create(
     temperature=0.7,
 )
 ```
----
 
-## 👨‍💻 Author
-
-**Anshuman Maurya**  
-📧 Email: anshumanmaurya776@gmail.com  
-🔗 GitHub: https://github.com/Anshuman776  
-
----
-
-
-## 📜 License
-MIT License...
-
-This project is for internal use at **FinSolve Technologies**.  
-All source code, models, and documentation are proprietary and confidential.
 
