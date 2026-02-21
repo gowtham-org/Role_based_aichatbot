@@ -1,16 +1,11 @@
 ![Python](https://img.shields.io/badge/Python-3.11-blue)
 ![FastAPI](https://img.shields.io/badge/Backend-FastAPI-green)
 ![Streamlit](https://img.shields.io/badge/Built%20with-Streamlit-red)
-![OpenAI](https://img.shields.io/badge/LLM-OpenAI-black)
-![LangChain](https://img.shields.io/badge/Built%20with-LangChain-green)
-![Embeddings](https://img.shields.io/badge/Embeddings-text--embedding--3--small-orange)
-![VectorDB](https://img.shields.io/badge/VectorDB-Chroma-purple)
-![Deployment](https://img.shields.io/badge/Deployment-Render-blueviolet)
-![License](https://img.shields.io/badge/License-MIT-brightgreen)
+![Google API](https://img.shields.io/badge/LLM-Google%20API-black)
 
 # 🤖 FinSolve Role-Based RAG Chatbot
 
-A secure, production-ready internal AI chatbot powered by **OpenAI + Vector Search (RAG)** — with **role-based access control (RBAC)** for Finance, HR, Engineering, Marketing, Employees, and C-Level Executives.
+A secure, production-ready internal AI chatbot powered by **Google API + Vector Search (RAG)** — with **role-based access control (RBAC)** for Finance, HR, Engineering, Marketing, Employees, and C-Level Executives.
 
 ## 🌐 Live Demo
 
@@ -54,8 +49,28 @@ This chatbot implements a Retrieval-Augmented Generation (RAG) pipeline with Rol
 - User asks a question
 - System performs semantic search in ChromaDB
 - Only role-permitted documents are retrieved
-- Context is sent to OpenAI GPT
-- GPT generates a friendly, contextual response
+- Context is sent to Google API
+- Google text-embedding model
+- Google LLM
+
+| Embeddings  | Google text-embedding model  |
+| LLM         | Google LLM             |
+
+    GOOGLE_API_KEY=your_google_api_key
+
+Generates embeddings using Google API embeddings
+
+  EMBEDDING_MODEL = GoogleEmbeddings(model = "text-embedding-model")
+
+2. Locate the Google model configuration inside the chat completion call:
+
+```python
+completion = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[...],
+    temperature=0.7,
+)
+```
 
 ---
 
@@ -189,7 +204,9 @@ pip install -r requirements.txt
 Create .env:
 
 ```bash
-OPENAI_API_KEY=your_openai_key
+GOOGLE_API_KEY=your_google_ai_studio_api_key
+# Optional (defaults to gemini-1.5-flash)
+GEMINI_MODEL=gemini-1.5-flash
 ```
 
 Run BAckend
@@ -215,7 +232,7 @@ python app/embed_documents.py
 
 This script:
 Loads documents from the resources/data/
-Generates embeddings using OpenAI embeddings
+Generates embeddings using Google API embeddings
 Stores them in ChromaDB with role-based metadata
 
 ✅ Once these steps are done, your role-based chatbot is fully set up and ready to use! 
@@ -227,12 +244,14 @@ Stores them in ChromaDB with role-based metadata
 
 | Username | Password     | Role              |
 |----------|--------------|-------------------|
-| Alice    | ceopass      | c-levelexecutives |
-| Bob      | employeepass | employee          |
-| Tony     | password123  | engineering       |
-| Bruce    | securepass   | marketing         |
-| Sam      | financepass  | finance           |
-| Natasha  | hrpass123    | hr                |
+| Gowtham    | ceopass      | c-levelexecutives |
+| Kiran      | employeepass | employee          |
+| Aakanksha     | password123  | engineering       |
+| Sahithi    | securepass   | marketing         |
+| Yasasvi      | financepass  | finance           |
+| Shiva  | hrpass123    | hr                |
+| Sid  | sidpass123    | marketing                |
+| Peter  | pete123    | engineering                |
 
 ---
 
@@ -253,7 +272,7 @@ python app/embed_documents.py
 ✅ **Change embedding model:**  
 - Inside `app/embed_documents.py`, change the line where you set:
   ```python
-  EMBEDDING_MODEL = OpenAIEmbeddings(model = "text-embedding-3-small")
+  EMBEDDING_MODEL = GoogleEmbeddings(model = "text-embedding-model")
   ```
   to any other `text-embedding-3-large"` model.
 
@@ -261,14 +280,10 @@ python app/embed_documents.py
 To change the language model used for response generation:
 
 1. Open `app/main.py`
-2. Locate the OpenAI model configuration inside the chat completion call:
-
-```python
-completion = client.chat.completions.create(
-    model="gpt-4o-mini",
-    messages=[...],
-    temperature=0.7,
-)
+2. Locate the Google model configuration inside the chat completion call:
 ```
+<userPrompt>
+Provide the fully rewritten file, incorporating the suggested code change. You must produce the complete file.
+</userPrompt>
 
 
